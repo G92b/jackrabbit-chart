@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1280" />
+    <title>JackRabbit — Patient chart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/app.css?v=27" />
+  </head>
+  <body data-role="staff">
+    <div class="app" id="app">
+      <header class="topbar">
+        <div class="brand">
+          <img
+            class="logo-rabbit"
+            src="img/jackrabbit-mark.png"
+            alt=""
+            width="41"
+            height="25"
+          />
+          <div class="wordmark">JackRabbit</div>
+        </div>
+        <div class="patient-switch">
+          <label class="visually-hidden" for="patientSelect">Patient</label>
+          <select id="patientSelect"></select>
+        </div>
+        <div class="role" role="group" aria-label="Current user">
+          <button type="button" id="roleStaff" aria-pressed="true">Office staff</button>
+          <button type="button" id="rolePhysician" aria-pressed="false">Physician</button>
+        </div>
+        <div class="top-actions">
+          <div class="save-meta" id="saveMeta">Saved</div>
+          <div class="new-patient-slot">
+            <button type="button" class="btn btn-ghost staff-field" id="btnNew">New patient</button>
+            <button type="button" class="btn btn-ghost staff-field" id="btnCancelNew" hidden>Cancel</button>
+          </div>
+          <button type="button" class="btn btn-primary" id="btnSave">Save</button>
+        </div>
+      </header>
+
+      <section class="panel identity" id="secIdentity" data-section="identity">
+        <div class="panel-h collapsible" data-collapse="identity">
+          <h2>Patient</h2>
+          <span class="chevron" aria-hidden="true"></span>
+        </div>
+        <div class="panel-b">
+          <div class="grid identity-main">
+            <div class="field" data-required="lastName">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" name="lastName" class="staff-field" autocomplete="off" />
+            </div>
+            <div class="field" data-required="firstName">
+              <label for="firstName">First Name</label>
+              <input id="firstName" name="firstName" class="staff-field" autocomplete="off" />
+            </div>
+            <div class="field field-middle">
+              <label for="middleName">Middle Name</label>
+              <input id="middleName" name="middleName" class="staff-field" autocomplete="off" />
+            </div>
+            <div class="field field-dob" data-required="dob">
+              <label for="dob">DOB <span class="age" id="ageLabel"></span></label>
+              <input id="dob" name="dob" type="date" class="staff-field" />
+            </div>
+            <div class="field" data-required="sex">
+              <label for="sex">Sex</label>
+              <select id="sex" name="sex" class="staff-field">
+                <option value=""></option>
+                <option value="F">F</option>
+                <option value="M">M</option>
+                <option value="X">X</option>
+              </select>
+            </div>
+            <div class="field" data-required="phone">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="mrn">Account #</label>
+              <input id="mrn" name="mrn" class="staff-field" />
+            </div>
+          </div>
+          <div class="grid identity-more" id="identityMore" hidden>
+            <div class="field">
+              <label for="address">Street</label>
+              <input id="address" name="address" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="state">State</label>
+              <input id="state" name="state" maxlength="2" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="zip">ZIP</label>
+              <input id="zip" name="zip" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="emergencyName">Emergency contact</label>
+              <input id="emergencyName" name="emergencyName" class="staff-field" />
+            </div>
+            <div class="field">
+              <label for="emergencyPhone">Emergency phone</label>
+              <input id="emergencyPhone" name="emergencyPhone" class="staff-field" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="columns">
+        <section class="panel" id="secCoverage" data-section="coverage">
+          <div class="panel-h static">
+            <h2>Coverage</h2>
+            <span class="summary" data-summary="coverage"></span>
+          </div>
+          <div class="panel-b">
+            <div class="grid coverage-main">
+              <div class="field" data-required="payerName">
+                <label for="payerName">Payer</label>
+                <input id="payerName" name="payerName" list="payerList" class="staff-field" />
+              </div>
+              <div class="field">
+                <label for="insuranceType">Plan Type</label>
+                <select id="insuranceType" name="insuranceType" class="staff-field"></select>
+              </div>
+              <div class="field" data-required="memberId">
+                <label for="memberId">Member ID</label>
+                <input id="memberId" name="memberId" class="staff-field" />
+              </div>
+              <div class="field">
+                <label for="groupNumber">Group #</label>
+                <input id="groupNumber" name="groupNumber" class="staff-field" />
+              </div>
+              <div class="field">
+                <label for="relationship">Relationship</label>
+                <select id="relationship" name="relationship" class="staff-field">
+                  <option value="self">Self</option>
+                  <option value="spouse">Spouse</option>
+                  <option value="child">Child</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="subscriberName">Subscriber (if not self)</label>
+                <input id="subscriberName" name="subscriberName" class="staff-field" />
+              </div>
+              <div class="field">
+                <label for="subscriberDob">Subscriber DOB</label>
+                <input id="subscriberDob" name="subscriberDob" type="date" class="staff-field" />
+              </div>
+              <div class="field">
+                <label for="subscriberAddress">Subscriber Address (if different)</label>
+                <input id="subscriberAddress" name="subscriberAddress" class="staff-field" />
+              </div>
+            </div>
+            <div class="flags">
+              <label class="check">
+                <input type="checkbox" id="employmentRelated" name="employmentRelated" class="staff-field" />
+                Employment related
+              </label>
+              <label class="check">
+                <input type="checkbox" id="autoAccident" name="autoAccident" class="staff-field" />
+                Auto accident
+              </label>
+              <label class="check">
+                <input type="checkbox" id="otherAccident" name="otherAccident" class="staff-field" />
+                Other accident
+              </label>
+              <label class="check">
+                <input type="checkbox" id="signatureOnFile" name="signatureOnFile" class="staff-field" />
+                Signature on file
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" id="secMeds" data-section="meds">
+          <div class="panel-h static">
+            <h2>Medications</h2>
+            <span class="summary" data-summary="meds"></span>
+            <div class="h-actions">
+              <button type="button" class="history-toggle staff-field" id="btnMedHistory" aria-expanded="false">
+                Medication history
+                <span class="caret-mini" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn-add staff-field" id="btnAddMed" aria-label="Add medication">+</button>
+            </div>
+          </div>
+          <div class="panel-b">
+            <div class="med-history" id="medHistory" hidden>
+              <div class="range-row" id="medHistoryRanges" role="group" aria-label="History period"></div>
+              <div id="medHistoryList"></div>
+            </div>
+            <div class="stack" id="medList"></div>
+          </div>
+        </section>
+
+        <section class="panel" id="secReferrals" data-section="referrals">
+          <div class="panel-h static">
+            <h2>Referrals</h2>
+            <span class="summary" data-summary="referrals"></span>
+            <div class="h-actions">
+              <button type="button" class="history-toggle staff-field" id="btnRefHistory" aria-expanded="false">
+                Referral history
+                <span class="caret-mini" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn-add staff-field" id="btnAddRef" aria-label="Add outbound referral">+</button>
+            </div>
+          </div>
+          <div class="panel-b">
+            <div class="ref-history" id="refHistory" hidden>
+              <div class="range-row" id="refHistoryRanges" role="group" aria-label="History period"></div>
+              <div id="refHistoryList"></div>
+            </div>
+            <div class="subhead">Inbound — who sent the patient here</div>
+            <div class="card inbound-card" id="inboundCard"></div>
+            <hr class="ref-split" />
+            <div class="subhead">Outbound — we are sending the patient</div>
+            <div class="stack" id="refList"></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel footer-dx" id="secDx" data-section="dx">
+        <div class="panel-h static">
+          <h2>Diagnoses</h2>
+          <span class="summary" data-summary="dx"></span>
+        </div>
+        <div class="panel-b">
+          <div class="dx-row">
+            <div id="dxChips"></div>
+            <div class="dx-add">
+              <div class="dx-add-field">
+                <button type="button" class="btn-add staff-field" id="btnAddDx" aria-label="Add diagnosis">+</button>
+                <input
+                  id="dxSearch"
+                  class="staff-field"
+                  placeholder="Add ICD-10 by code or name"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="suggest" id="dxSuggest"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel physician notes" id="secNotes" data-section="notes">
+        <div class="panel-h static">
+          <h2>Physician notes</h2>
+          <span class="summary" data-summary="notes"></span>
+        </div>
+        <div class="panel-b">
+          <div class="field">
+            <label for="notes">Info box</label>
+            <textarea id="notes" name="notes" class="physician-field"></textarea>
+          </div>
+          <div class="note-history">
+            <h3>Previous visits</h3>
+            <div id="noteHistoryList"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="medCancelModal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="medCancelTitle">
+        <h3 id="medCancelTitle">Remove medication</h3>
+        <p class="modal-lead" id="medCancelLead"></p>
+        <div class="field">
+          <label for="medCancelReason">Reason for removing</label>
+          <textarea id="medCancelReason" rows="3"></textarea>
+        </div>
+        <label class="check modal-check">
+          <input type="checkbox" id="medCancelApproved" />
+          I have the physician’s approval to remove this medication
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost-dark" id="medCancelDismiss">Keep medication</button>
+          <button type="button" class="btn btn-danger-solid" id="medCancelConfirm" disabled>Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="refCancelModal" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="refCancelTitle">
+        <h3 id="refCancelTitle">Remove referral</h3>
+        <p class="modal-lead" id="refCancelLead"></p>
+        <div class="field">
+          <label for="refCancelReason">Reason for removing</label>
+          <textarea id="refCancelReason" rows="3"></textarea>
+        </div>
+        <label class="check modal-check">
+          <input type="checkbox" id="refCancelApproved" />
+          I have the physician’s approval to remove this referral
+        </label>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost-dark" id="refCancelDismiss">Keep referral</button>
+          <button type="button" class="btn btn-danger-solid" id="refCancelConfirm" disabled>Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <datalist id="payerList"></datalist>
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+    </style>
+    <script src="js/data.js?v=10"></script>
+    <script src="js/app.js?v=20"></script>
+  </body>
+</html>
