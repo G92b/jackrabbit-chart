@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>JackRabbit — Insurance paperwork, once</title>
+    <title>JackRabbit — Insurance paperwork, without the payroll</title>
     <meta
       name="description"
-      content="JackRabbit keeps patient coverage with the chart so small and mid-size clinics stop re-entering insurance paperwork every month."
+      content="JackRabbit formats and submits insurance forms automatically. For a 3–5 person practice, that could mean about 8 fewer billing hours a week—roughly $450 extra, even after a low subscription. Far less than paying one staff member to do the same work."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,114 +20,78 @@
     <header class="nav">
       <div class="wrap nav-inner">
         <a class="brand" href="landing.html">
-          <span class="brand-mark">
-            <img src="img/jackrabbit-mark.png" alt="" width="41" height="25" />
-          </span>
+          <img
+            class="logo-rabbit"
+            src="img/jackrabbit-mark.png"
+            alt=""
+            width="41"
+            height="25"
+          />
           <span class="wordmark">JackRabbit</span>
         </a>
         <nav class="nav-links" aria-label="Page">
           <a href="#how">How it works</a>
-          <a href="#savings">Cost</a>
-          <a class="btn btn-purple" href="index.html">Try JackRabbit</a>
+          <a href="#savings">Price</a>
+          <a class="btn btn-tan" href="index.html">Try JackRabbit</a>
         </nav>
       </div>
     </header>
 
     <main>
       <section class="hero">
-        <div class="wrap">
-          <div class="hero-copy">
-            <p class="eyebrow">For clinics and medical practices</p>
-            <h1>Stop filling out the same insurance forms every month.</h1>
-            <p class="lede">
-              JackRabbit keeps each patient’s coverage with their chart. Physicians
-              and office managers enter payer, member ID, and group number once—not
-              again in April, and not again in May.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-purple" href="index.html">Try JackRabbit</a>
-              <a class="btn btn-ghost" href="#how">See how it works</a>
-            </div>
-            <p class="hero-note">Built for small- and medium-sized practices. No training binder required.</p>
-          </div>
-
-          <div class="preview" aria-hidden="true">
-            <div class="chart-frame">
-              <div class="chart-top">
-                <div class="chart-brand">
-                  <img src="img/jackrabbit-mark.png" alt="" />
-                  <span>JackRabbit</span>
-                </div>
-                <div class="chart-pill">Elena M. Vasquez</div>
-                <div class="chart-pill">Office staff</div>
-                <div class="chart-save">Save</div>
+        <div class="hero-bleed">
+          <figure class="hero-art">
+            <img
+              src="img/hero-wildflowers.png?v=3"
+              alt="A winding country road through green hills, a pond, and plum wildflowers."
+              width="1600"
+              height="900"
+            />
+          </figure>
+          <div class="wrap">
+            <div class="hero-copy">
+              <p class="eyebrow">For clinics and medical practices</p>
+              <h1>Stop filling out the same insurance forms every month.</h1>
+              <p class="lede">
+                Confirm the form. JackRabbit formats it for the payer and submits it
+                automatically. Far less than paying one staff member.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-purple" href="index.html">Try JackRabbit</a>
+                <a class="btn btn-ghost" href="#how">See how it works</a>
               </div>
-              <div class="chart-grid">
-                <div class="chart-panel">
-                  <h4>Coverage — on file</h4>
-                  <div class="fake-fields">
-                    <div class="fake-field">
-                      <span>Payer</span>
-                      <b>Humana</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>Plan type</span>
-                      <b>Medicare Advantage</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>Member ID</span>
-                      <b>H9984-220183</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>Group #</span>
-                      <b>AZ-MA-441</b>
-                    </div>
-                  </div>
-                </div>
-                <div class="chart-panel">
-                  <h4>Patient</h4>
-                  <div class="fake-fields">
-                    <div class="fake-field">
-                      <span>Name</span>
-                      <b>Vasquez, Elena</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>DOB</span>
-                      <b>03/14/1958</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>Account #</span>
-                      <b>JR-10482</b>
-                    </div>
-                    <div class="fake-field">
-                      <span>Signature on file</span>
-                      <b>Yes</b>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p class="hero-note">Built for small- and medium-sized practices.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="pain">
-        <div class="wrap">
-          <hr class="pain-rule" />
-          <div class="pain-grid">
+      <section class="product">
+        <div class="wrap product-row">
+          <figure class="preview">
+            <img
+              src="img/product-desktop.png"
+              alt="JackRabbit open on a clinic desktop, showing the full patient chart."
+              width="1600"
+              height="900"
+            />
+          </figure>
+          <div class="pain-stack">
             <div>
               <h2>The monthly grind is not clinical work.</h2>
               <p>
                 Coverage rarely changes. The forms still show up. Front desks retype
-                member IDs. Physicians wait. The practice pays for both.
+                member IDs. Physicians wait. The practice pays a salary for work
+                software can finish almost automatically.
               </p>
             </div>
             <div>
               <h2>JackRabbit is the chart that remembers.</h2>
               <p>
                 Open a patient, and the insurance block is already there—payer, plan,
-                subscriber, accident flags, signature on file. Staff update what
-                changed. Physicians stay in the visit.
+                subscriber, accident flags, signature on file. Staff confirm what
+                is correct. JackRabbit formats the claim and submits it. You are not
+                paying someone to retype and send the same form.
               </p>
             </div>
           </div>
@@ -138,15 +102,15 @@
         <div class="wrap split-grid">
           <article class="audience">
             <p class="kicker">Office managers</p>
-            <h3>Fewer hours on paperwork. Lower overhead.</h3>
+            <h3>Fewer hours on paperwork. A subscription, not a salary.</h3>
             <p>
-              You are not short on patients. You are short on people who can spend
-              another afternoon on the same CMS fields.
+              JackRabbit costs far less than paying one staff member to do the same
+              billing work—and it happens almost automatically.
             </p>
             <ul>
               <li>Enter coverage once; reuse it on every visit</li>
-              <li>One record for identity, payer, and subscriber details</li>
-              <li>Staff can work the chart without a week of software training</li>
+              <li>Confirm the form; JackRabbit submits it to the payer</li>
+              <li>About 8 billing hours back each week in a 3–5 person practice</li>
             </ul>
           </article>
           <article class="audience">
@@ -159,7 +123,7 @@
             <ul>
               <li>A physician view that stays out of the way</li>
               <li>ICD-10, meds, and referrals in the same chart</li>
-              <li>No hunting for a member ID mid-appointment</li>
+              <li>Staff time stays in the visit, not in unpaid form-chasing</li>
             </ul>
           </article>
         </div>
@@ -168,7 +132,7 @@
       <section class="steps" id="how">
         <div class="wrap">
           <p class="eyebrow">How it works</p>
-          <h2>Three steps. Then you are done with it.</h2>
+          <h2>Confirm the form. JackRabbit sends it.</h2>
           <div class="step-list">
             <article class="step">
               <h3>Chart the patient once</h3>
@@ -185,13 +149,41 @@
               </p>
             </article>
             <article class="step">
-              <h3>See the patient</h3>
+              <h3>Confirm it is correct</h3>
               <p>
-                Staff confirm what changed. Physicians add notes and diagnoses.
-                Insurance busywork is not the visit.
+                Staff review the form. When it is right, they confirm. That is the
+                last human step.
+              </p>
+            </article>
+            <article class="step">
+              <h3>JackRabbit submits</h3>
+              <p>
+                JackRabbit formats the packet to that payer’s requirements and
+                sends it. Included in a low subscription—not another hire.
               </p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="formats" id="submit">
+        <div class="wrap formats-grid">
+          <div>
+            <p class="eyebrow">Submission</p>
+            <h2>Each payer gets the format they require. Automatically.</h2>
+            <p>
+              Humana does not want the same file as a regional PPO. After you confirm
+              the form, JackRabbit assembles it to that payer’s spec and submits it
+              for you—PDF, CSV, or another format they ask for. The practice does not
+              keep a spreadsheet of “how this insurer likes it.”
+            </p>
+          </div>
+          <ul class="format-list">
+            <li>PDF</li>
+            <li>CSV</li>
+            <li>Payer-required formats</li>
+            <li>Low subscription</li>
+          </ul>
         </div>
       </section>
 
@@ -199,18 +191,19 @@
         <div class="wrap">
           <div class="savings-box">
             <div>
-              <p class="eyebrow">Cost</p>
-              <h2>Retyping coverage is a line item.</h2>
+              <p class="eyebrow">Affordability</p>
+              <h2>Far less than paying one staff member.</h2>
               <p>
-                If a front-desk hour costs the practice, repeating unchanged insurance
-                details is wasted payroll. JackRabbit cuts that loop: keep what is
-                already true, edit only what is new. Simpler software also means you
-                are not paying enterprise EHR prices to store a member ID.
+                For a practice with 3–5 staff, JackRabbit could save about 8 hours of
+                tedious billing work each week. That is like billing an additional
+                $450 per week—even after JackRabbit’s low subscription. The work
+                happens almost automatically: confirm the form, and JackRabbit
+                formats and submits it.
               </p>
             </div>
             <div class="math">
-              <strong>Once, not monthly</strong>
-              <span>Coverage stays on the chart until someone changes it.</span>
+              <strong>$450 / week</strong>
+              <span>After the subscription, for a 3–5 person practice.</span>
             </div>
           </div>
         </div>
@@ -220,8 +213,8 @@
         <div class="wrap">
           <h2>Give the front desk their mornings back.</h2>
           <p>
-            JackRabbit is a patient chart for practices that are done paying staff to
-            fill out the same insurance paperwork every month.
+            Confirm the form. JackRabbit submits it. You keep the hours—and pay far
+            less than one person to do the same work.
           </p>
           <div class="hero-actions">
             <a class="btn btn-tan" href="index.html">Open the chart</a>
